@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe 'MagicDeck show page' do
+RSpec.describe 'Cards index page' do
   describe ''
 end
