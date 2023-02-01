@@ -4,9 +4,11 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.references :magic_deck, index: true, foreign_key: true
       t.string :name
       t.integer :mana_cost
-      t.string :type
-      t.integer :power
-      t.integer :toughness
+      t.string :card_type
+      t.string :archtype
+      t.string :rarity
+      t.string :power_toughness
+      t.string :expansion
       t.boolean :legal
       t.timestamps
     end

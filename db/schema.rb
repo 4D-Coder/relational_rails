@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 2023_02_01_011955) do
     t.bigint "magic_deck_id"
     t.string "name"
     t.integer "mana_cost"
-    t.string "type"
-    t.integer "power"
-    t.integer "toughness"
+    t.string "card_type"
+    t.string "archtype"
+    t.string "rarity"
+    t.string "power_toughness"
+    t.string "expansion"
     t.boolean "legal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
