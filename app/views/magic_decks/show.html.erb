@@ -1,0 +1,19 @@
+<h1><%= @magic_deck.name %></h1>
+<section>
+  <h3>Minimum Card Count</h3>
+  <li><%= @magic_deck.minimum_card_count  %></li>
+  <h3>Format</h3>
+  <li><%= @magic_deck.format  %></li>
+  <h3>Legal?</h3>
+  <li><%= @magic_deck.qualifies  %></li>
+</section>
+<!--
+  Future Implementation
+
+  <h3>Legality</h3>
+  <% if @magic_deck.qualifies? %>
+    <li><%= "This deck is #{@magic_deck.format} legal." %></li>
+  <% else %>
+    <li><%= "This deck is not #{@magic_deck.format} legal." %></li>
+  <% end %>
+-->
