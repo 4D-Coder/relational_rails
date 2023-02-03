@@ -2,19 +2,14 @@
 
 <section>
   <% @cards.each do |card| %>
-    <h3>Name:</h3>
-    <p><%= card.name %></p>
-    <h3>Mana Cost:</h3>
-    <p><%= card.mana_cost %></p>
-    <h3>Type:</h3>
-    <p><%= card.card_type %> - <%= if card.archtype == nil then "N/A" else card.archtype end %>
-    <h3>Rarity:</h3>
-    <p><%= card.rarity %></p>
-    <h3>Power/Toughness:</h3>
-    <p><%= if card.power_toughness == nil then "N/A" else card.power_toughness end %>
-    <h3>Expansion</h3>
-    <p><%= card.expansion %></p>
-    <h3>Legal?</h3>
-    <p><%= card.legal %></p>
+    <h3><%= card.name %></h3>
+      <ul>
+        <li>Mana Cost: <%= card.mana_cost %></li>
+        <li>Type: <%= card.card_type %> - <%= if card.archtype == nil then "N/A" else card.archtype end %></li>
+        <li>Rarity: <%= card.rarity %></li>
+        <li>Power/Toughness: <%= if card.power_toughness == nil then "N/A" else card.power_toughness end %></li>
+        <li>Expansion: <%= card.expansion %></li>
+        <li>Legal? - <%= card.legal %></li>
+      </ul>
   <% end %>
 <section>

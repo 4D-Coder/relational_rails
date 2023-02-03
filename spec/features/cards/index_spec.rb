@@ -26,7 +26,7 @@ RSpec.describe 'Cards index page' do
   end
 end
 
-# [ ] done
+# [X] done
 
 # User Story 3, Child Index 
 

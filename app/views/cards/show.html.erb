@@ -1,0 +1,9 @@
+<h1><%= @card.name %></h1>
+<ul>
+  <li>Mana Cost: <%= @card.mana_cost %></li>
+  <li>Type: <%= @card.card_type %> - <%= if @card.archtype == nil then "N/A" else @card.archtype end %></li>
+  <li>Rarity: <%= @card.rarity %></li>
+  <li>Power/Toughness: <%= if @card.power_toughness == nil then "N/A" else @card.power_toughness end %></li>
+  <li>Expansion: <%= @card.expansion %></li>
+  <li>Legal? - <%= @card.legal %></li>
+</ul>
