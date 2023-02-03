@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get '/magic_decks', to: 'magic_decks#index'
   get '/magic_decks/:id', to: 'magic_decks#show'
   get '/cards', to: 'cards#index'
+  get '/cards/:id', to: 'cards#show'
 
 end
