@@ -8,21 +8,23 @@ RSpec.describe 'Cards index page' do
     card_2 = Card.create!(name: "Necroduality", mana_cost: 4, card_type: "Enchantment", rarity: "MR", expansion: "VOW", legal: true, magic_deck_id: magic_deck_1.id)
     
     visit '/cards'
-
+    save_and_open_page
+    
     expect(page).to have_content(card_1.name)
     expect(page).to have_content(card_2.name)
-    expect(page).to have_content(card_1.mana_cost)
-    expect(page).to have_content(card_2.mana_cost)
-    expect(page).to have_content(card_1.card_type)
-    expect(page).to have_content(card_2.card_type)
-    expect(page).to have_content(card_1.rarity)
-    expect(page).to have_content(card_2.rarity)
-    expect(page).to have_content(card_1.power_toughness)
-    expect(page).to have_content(card_2.power_toughness)
-    expect(page).to have_content(card_1.expansion)
-    expect(page).to have_content(card_2.expansion)
-    expect(page).to have_content(card_1.legal)
-    expect(page).to have_content(card_2.legal)
+    expect(page).to have_content("Mana Cost: #{card_1.mana_cost}")
+    expect(page).to have_content("Mana Cost: #{card_2.mana_cost}")
+    expect(page).to have_content("Type: #{card_1.card_type}")
+    expect(page).to have_content("Type: #{card_2.card_type}")
+    expect(page).to have_content("Rarity: #{card_1.rarity}")
+    expect(page).to have_content("Rarity: #{card_2.rarity}")
+    expect(page).to have_content("Power/Toughness: #{card_1.power_toughness}")
+    expect(page).to have_content("Power/Toughness: #{card_2.power_toughness}")
+    expect(page).to have_content("Expansion: #{card_1.expansion}")
+    expect(page).to have_content("Expansion: #{card_2.expansion}")
+    expect(page).to have_content("Legal? - #{card_1.legal}")
+    expect(page).to have_content("Legal? - #{card_2.legal}")
+    #include entire line in test
   end
 end
 

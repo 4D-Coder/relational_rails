@@ -5,11 +5,12 @@ RSpec.describe 'MagicDeck show page' do
     magic_deck_1 = MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true )
   
     visit "/magic_decks/#{magic_deck_1.id}"
+    save_and_open_page
  
     expect(page).to have_content(magic_deck_1.name)
-    expect(page).to have_content(magic_deck_1.format)
-    expect(page).to have_content(magic_deck_1.minimum_card_count)
-    expect(page).to have_content(magic_deck_1.qualifies)
+    expect(page).to have_content("Minimum Card Count: #{magic_deck_1.minimum_card_count}")
+    expect(page).to have_content("Format: #{magic_deck_1.format}")
+    expect(page).to have_content("Legal? - #{magic_deck_1.qualifies}")
   end
 end
 

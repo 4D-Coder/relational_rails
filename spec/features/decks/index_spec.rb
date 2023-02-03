@@ -7,7 +7,8 @@ RSpec.describe 'MagicDeck index page', type: :feature do
     magic_deck_3 = MagicDeck.create!(name: "Newest Vampires", format: "Commander", minimum_card_count: 100, qualifies: true )
 
     visit "/magic_decks"
-
+    save_and_open_page
+    
     expect(page).to have_content(magic_deck_1.name)
     expect(page).to have_content(magic_deck_2.name)
     expect(page).to have_content(magic_deck_3.name)

@@ -6,18 +6,20 @@ RSpec.describe 'MagicDeck show page' do
     card = Card.create!(name: "Necroduality", mana_cost: 4, card_type: "Enchantment", rarity: "MR", expansion: "VOW", legal: true, magic_deck_id: @magic_deck.id)
 
     visit "/cards/#{card.id}"
+    save_and_open_page
 
     expect(page).to have_content(card.name)
-    expect(page).to have_content(card.mana_cost)
-    expect(page).to have_content(card.card_type)
-    expect(page).to have_content(card.rarity)
-    expect(page).to have_content(card.expansion)
-    expect(page).to have_content(card.legal)
+    expect(page).to have_content("Mana Cost: #{card.mana_cost}")
+    expect(page).to have_content("Type - Archtype: #{card.card_type} - #{card.archtype}")
+    expect(page).to have_content("Rarity: #{card.rarity}")
+    expect(page).to have_content("Power/Toughness: #{card.power_toughness}")
+    expect(page).to have_content("Expansion: #{card.expansion}")
+    expect(page).to have_content("Legal? - #{card.legal}")
   end
 end
 
 
-# [ ] done
+# [X] done
 
 # User Story 4, Child Show 
 
