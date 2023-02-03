@@ -11,9 +11,11 @@ RSpec.describe 'MagicDeck show page' do
     expect(page).to have_content(magic_deck_1.minimum_card_count)
     expect(page).to have_content(magic_deck_1.qualifies)
   end
+
+  it ""
 end
 
-# [ ] done
+# [X] done
 
 # User Story 2, Parent Show 
 
