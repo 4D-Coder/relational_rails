@@ -1,4 +1,8 @@
-<h1>Magic Deck Index</h1>
-<% @magic_decks.each do |deck| %>
-  <h3><%= deck.name %>
-<% end %>
+<section>
+  <h1>Magic Deck Index</h1>
+  <% @magic_decks.each do |deck| %>
+    <ul>
+      <li><%= deck.name %></li>
+    </ul>
+  <% end %>
+</section>
