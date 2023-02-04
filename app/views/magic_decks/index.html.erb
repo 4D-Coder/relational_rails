@@ -2,7 +2,7 @@
   <h1>Magic Deck Index</h1>
   <% @magic_decks.each do |deck| %>
     <ul>
-      <li><%= deck.name %></li>
+      <li><%= deck.name %>, created at: <%= deck.created_at %></li>
     </ul>
   <% end %>
 </section>
