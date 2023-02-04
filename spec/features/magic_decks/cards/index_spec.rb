@@ -14,15 +14,23 @@ RSpec.describe 'MagicDeck show page' do
       it "can see each Child in the system including the Child's attributes" do
         
         visit "/magic_decks/#{@magic_deck_1.id}/cards"
+        
         save_and_open_page
-    
+
         expect(page).to have_content(@card_1.name)
         expect(page).to have_content("Mana Cost: #{@card_1.mana_cost}")
-        expect(page).to have_content("Type: #{@card_1.card_type}")
+        expect(page).to have_content("Type - Archtype: #{@card_1.card_type} - #{@card_1.archtype}")
         expect(page).to have_content("Rarity: #{@card_1.rarity}")
         expect(page).to have_content("Power/Toughness: #{@card_1.power_toughness}")
         expect(page).to have_content("Expansion: #{@card_1.expansion}")
         expect(page).to have_content("Legal? - #{@card_1.legal}")
+        expect(page).to have_content(@card_2.name)
+        expect(page).to have_content("Mana Cost: #{@card_2.mana_cost}")
+        expect(page).to have_content("Type - Archtype: #{@card_2.card_type} - #{@card_2.archtype}")
+        expect(page).to have_content("Rarity: #{@card_2.rarity}")
+        expect(page).to have_content("Power/Toughness: #{@card_2.power_toughness}")
+        expect(page).to have_content("Expansion: #{@card_2.expansion}")
+        expect(page).to have_content("Legal? - #{@card_2.legal}")
       end
     end
   end
@@ -31,7 +39,7 @@ end
 
 
 
-# [ ] done
+# [X] done
 
 # User Story 5, Parent Children Index 
 
