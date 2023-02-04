@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'MagicDeck show page' do
   describe "As a visitor" do
 
-    before do
+    before :each do
       @magic_deck_1 = MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true)
       
       @card_1 = @magic_deck_1.cards.create!(name: "Henrika Domnathi", mana_cost: 4, card_type: "Legendary Creature", archtype: "Vampire", rarity: "MR", power_toughness: "1/3", expansion: "VOW", legal: true)
