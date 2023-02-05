@@ -12,7 +12,6 @@ RSpec.describe 'MagicDeck index page', type: :feature do
       it "can see the name of each parent record in the system for each parent table" do
     
         visit "/magic_decks"
-        save_and_open_page
         
         expect(page).to have_content(@magic_deck_1.name)
         expect(page).to have_content(@magic_deck_2.name)
@@ -24,7 +23,6 @@ RSpec.describe 'MagicDeck index page', type: :feature do
       it 'can see that records are ordered by most recently created first' do
 
         visit "/magic_decks"
-        save_and_open_page
 
         expect(page).to have_content("#{@magic_deck_2.name}")
         expect(page).to have_content("#{@magic_deck_3.name}")
@@ -33,13 +31,22 @@ RSpec.describe 'MagicDeck index page', type: :feature do
       
       it 'can see when it was created next to each of the records' do
         
-        visit "/magic_decks"
-        save_and_open_page
+        visit '/magic_decks'
   
         expect(page).to have_content("#{@magic_deck_2.name}, created at: #{@magic_deck_2.created_at}")
         expect(page).to have_content("#{@magic_deck_3.name}, created at: #{@magic_deck_3.created_at}")
         expect(page).to have_content("#{@magic_deck_1.name}, created at: #{@magic_deck_1.created_at}")
         
+      end
+    end
+
+    context 'When I visit any page on the site' do
+      it 'can see a link at the top of the page that takes me to the Child Index' do
+        visit '/magic_decks'
+        save_and_open_page
+
+        click_link('Cards Index')
+        expect(current_path).to eq('/cards')
       end
     end
   end
@@ -62,3 +69,13 @@ end
 # When I visit the parent index,
 # I see that records are ordered by most recently created first
 # And next to each of the records I see when it was created
+
+# [ ] done
+
+# User Story 8, Child Index Link
+
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Child Index
+
+

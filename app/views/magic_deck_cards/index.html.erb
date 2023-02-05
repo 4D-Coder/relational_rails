@@ -1,5 +1,8 @@
-<section>
+<header>
+  <%= link_to "Cards Index", "/cards"%>
   <h1>Card Details</h1>
+</header>
+<section>
   <% @cards.each do |card| %>  
     <h2><%= card.name %></h2>
     <ul>
