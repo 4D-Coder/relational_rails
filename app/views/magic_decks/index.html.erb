@@ -1,5 +1,8 @@
-<section>
+<header>
+  <%= link_to "Cards Index", "/cards"%>
   <h1>Magic Deck Index</h1>
+</header>
+<section>
   <% @magic_decks.each do |deck| %>
     <ul>
       <li><%= deck.name %>, created at: <%= deck.created_at %></li>

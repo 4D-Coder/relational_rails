@@ -44,7 +44,7 @@ end
 # Then I see the parent with that id including the parent's attributes
 # (data from each column that is on the parent table)
 
-# [ ] done
+# [X] done
 
 # User Story 7, Parent Child Count
 

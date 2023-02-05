@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'MagicDeck show page' do
+RSpec.describe 'Cards show page' do
   describe "As a visitor" do
     context "When I visit '/child_table_name/:id'" do
       it "can see the child with that id including the child's attributes" do
@@ -31,3 +31,4 @@ end
 # When I visit '/child_table_name/:id'
 # Then I see the child with that id including the child's attributes
 # (data from each column that is on the child table)
+
