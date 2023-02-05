@@ -42,8 +42,8 @@ RSpec.describe 'MagicDeck index page', type: :feature do
 
     context 'When I visit any page on the site' do
       it 'can see a link at the top of the page that takes me to the Child Index' do
+        
         visit '/magic_decks'
-        save_and_open_page
 
         click_link('Cards Index')
         expect(current_path).to eq('/cards')
@@ -70,12 +70,11 @@ end
 # I see that records are ordered by most recently created first
 # And next to each of the records I see when it was created
 
-# [ ] done
+# [X] done
 
 # User Story 8, Child Index Link
 
 # As a visitor
 # When I visit any page on the site
 # Then I see a link at the top of the page that takes me to the Child Index
-
 

@@ -14,7 +14,6 @@ RSpec.describe 'Cards index page' do
       it "can see each Child in the system including the Child's attributes" do
         
         visit '/cards'
-        save_and_open_page
         
         expect(page).to have_content(@card_1.name)
         expect(page).to have_content(@card_2.name)
@@ -32,6 +31,15 @@ RSpec.describe 'Cards index page' do
         expect(page).to have_content("Legal? - #{@card_2.legal}")
       end
     end
+
+    context 'When I visit any page on the site' do
+      it 'can see a link at the top of the page that takes me to the Parent Index' do
+        visit '/cards'
+
+        click_link('Magic Decks Index')
+        expect(current_path).to eq('/magic_decks')
+      end
+    end
   end
 end
 
@@ -43,3 +51,12 @@ end
 # When I visit '/child_table_name'
 # Then I see each Child in the system including the Child's attributes
 # (data from each column that is on the child table)
+
+
+# [X] done
+
+# User Story 9, Parent Index Link
+
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Parent Index
