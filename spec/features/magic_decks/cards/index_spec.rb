@@ -14,8 +14,6 @@ RSpec.describe 'MagicDeckCards index page' do
       it "can see each Child in the system including the Child's attributes" do
         
         visit "/magic_decks/#{@magic_deck_1.id}/cards"
-        
-        save_and_open_page
 
         expect(page).to have_content(@card_1.name)
         expect(page).to have_content("Mana Cost: #{@card_1.mana_cost}")

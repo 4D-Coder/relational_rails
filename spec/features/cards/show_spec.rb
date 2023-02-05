@@ -8,7 +8,6 @@ RSpec.describe 'Cards show page' do
         card = Card.create!(name: "Necroduality", mana_cost: 4, card_type: "Enchantment", rarity: "MR", expansion: "VOW", legal: true, magic_deck_id: @magic_deck.id)
 
         visit "/cards/#{card.id}"
-        save_and_open_page
 
         expect(page).to have_content(card.name)
         expect(page).to have_content("Mana Cost: #{card.mana_cost}")
