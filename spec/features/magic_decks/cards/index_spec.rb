@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'MagicDeck show page' do
+RSpec.describe 'MagicDeckCards index page' do
   describe "As a visitor" do
 
     before :each do

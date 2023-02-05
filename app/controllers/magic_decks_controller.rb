@@ -6,6 +6,6 @@ class MagicDecksController < ApplicationController
   
   def show
     @magic_deck = MagicDeck.find(params[:magic_decks_id])
-    # @decks_cards = Card.
+    @card_count = @magic_deck.cards.count
   end
 end
