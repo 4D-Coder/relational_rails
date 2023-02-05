@@ -22,6 +22,16 @@ RSpec.describe 'MagicDeck show page' do
         expect(page).to have_content("Legal? - #{@magic_deck_1.qualifies}")
       end
     end
+
+    context "When I visit a parent's show page" do
+      it "I see a count of the number of children associated with this parent" do
+      
+        visit "/magic_decks/#{@magic_deck_1.id}"
+        save_and_open_page
+        
+        expect(page).to have_content("This deck has: #{@magic_deck_1.cards.count} cards")
+      end
+    end
   end
 end
 
@@ -34,3 +44,10 @@ end
 # Then I see the parent with that id including the parent's attributes
 # (data from each column that is on the parent table)
 
+# [ ] done
+
+# User Story 7, Parent Child Count
+
+# As a visitor
+# When I visit a parent's show page
+# I see a count of the number of children associated with this parent
