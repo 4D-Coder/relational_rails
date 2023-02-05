@@ -31,6 +31,17 @@ RSpec.describe 'MagicDeckCards index page' do
         expect(page).to have_content("Legal? - #{@card_2.legal}")
       end
     end
+
+    context "When I visit a parent show page" do
+      it "can see a link to take me to that parent's `child_table_name` page" do
+
+        visit "/magic_decks/#{@magic_deck_1.id}"
+        
+        save_and_open_page
+        click_link("#{@magic_deck_1.name}")
+        expect(current_path).to eq("/magic_decks/#{@magic_deck_1.id}/cards")
+      end
+    end
   end
 end
 
@@ -45,3 +56,11 @@ end
 # When I visit '/parents/:parent_id/child_table_name'
 # Then I see each Child that is associated with that Parent with each Child's attributes
 # (data from each column that is on the child table)
+
+# [ ] done
+
+# User Story 10, Parent Child Index Link
+
+# As a visitor
+# When I visit a parent show page ('/parents/:id')
+# Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')

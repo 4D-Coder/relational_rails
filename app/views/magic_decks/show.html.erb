@@ -4,7 +4,7 @@
   <h1>Deck Details</h1>
 </header>
 <section>
-  <h2><%= @magic_deck.name %></h2>
+  <h2><%= link_to "#{@magic_deck.name}", "/magic_decks/#{@magic_deck.id}/cards" %></h2>
   <p>This deck has: <%= @card_count %> cards</p>
   <ul>
     <li>Minimum Card Count: <%= @magic_deck.minimum_card_count %></li>

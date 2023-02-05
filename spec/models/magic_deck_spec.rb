@@ -10,8 +10,4 @@ RSpec.describe MagicDeck, type: :model do
   describe 'child relationship' do 
     it {should have_many :cards}
   end
-
-  describe '' do
-
-  end
 end
