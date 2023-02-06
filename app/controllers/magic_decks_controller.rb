@@ -14,11 +14,18 @@ class MagicDecksController < ApplicationController
   end
 
   def create
-    magic_deck = MagicDeck.create(name: params[:name], format: params[:format])
+    magic_deck = MagicDeck.create(magic_deck_params)
     redirect_to "/magic_decks"
   end
 
   def edit
-    
+
+  end
+
+  def magic_deck_params
+    params.permit(
+      :name,
+      :format
+    )
   end
 end
