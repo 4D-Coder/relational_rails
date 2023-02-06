@@ -14,7 +14,6 @@ RSpec.describe 'MagicDeck show page' do
       it "can see the parent with that id including the parent's attributes" do
       
         visit "/magic_decks/#{@magic_deck_1.id}"
-        save_and_open_page
      
         expect(page).to have_content(@magic_deck_1.name)
         expect(page).to have_content("Minimum Card Count: #{@magic_deck_1.minimum_card_count}")
@@ -27,7 +26,6 @@ RSpec.describe 'MagicDeck show page' do
       it "I see a count of the number of children associated with this parent" do
       
         visit "/magic_decks/#{@magic_deck_1.id}"
-        save_and_open_page
         
         expect(page).to have_content("This deck has: #{@magic_deck_1.cards.count} cards")
       end

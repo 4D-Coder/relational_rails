@@ -14,7 +14,26 @@ class MagicDecksController < ApplicationController
   end
 
   def create
-    magic_deck = MagicDeck.create(name: params[:name], format: params[:format])
+    magic_deck = MagicDeck.create(magic_deck_params)
     redirect_to "/magic_decks"
+  end
+
+  def edit
+    @magic_deck = MagicDeck.find(params[:id])
+  end
+
+  def update
+    magic_deck = MagicDeck.find(params[:magic_decks_id])
+    magic_deck.update(magic_deck_params)
+    
+    redirect_to "/magic_decks/#{magic_deck.id}"
+  end
+
+  def magic_deck_params
+
+    params.permit(
+      :name,
+      :format
+    )
   end
 end

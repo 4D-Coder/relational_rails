@@ -1,0 +1,7 @@
+<%= form_with url: "/magic_decks/#{@magic_deck.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :format %>
+  <%= form.text_field :format %>
+  <%= form.submit "Save Changes to #{@magic_deck.name}" %>
+<% end %>
