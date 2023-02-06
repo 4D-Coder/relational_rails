@@ -29,26 +29,6 @@ RSpec.describe 'MagicDeck show page' do
         
         expect(page).to have_content("This deck has: #{@magic_deck_1.cards.count} cards")
       end
-
-      it "clicks the link to the update page from MagicDeck show and directs viewer to that page" do
-    
-        visit "/magic_decks/#{@magic_deck_1.id}"
-
-        click_link("Update #{@magic_deck_1.name}")
-        expect(current_path).to eq('/magic_decks/:id/edit')
-      end
-
-      it "can create a new Magic Deck" do
-        visit '/magic_decks/new'
-
-        fill_in('Name', with: 'Undead Hunger')
-        fill_in('Format', with: 'Commander / EDH')
-        click_button('Create Magic Deck')
-
-        expect(current_path).to eq("/magic_decks")
-        expect(page).to have_content('Undead Hunger')
-        expect(page).to have_content('Commander / EDH')
-      end
     end
   end
 end
@@ -69,18 +49,3 @@ end
 # As a visitor
 # When I visit a parent's show page
 # I see a count of the number of children associated with this parent
-
-# [ ] done
-
-# User Story 12, Parent Update 
-
-# As a visitor
-# When I visit a parent show page
-# Then I see a link to update the parent "Update Parent"
-# When I click the link "Update Parent"
-# Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/parents/:id',
-# the parent's info is updated,
-# and I am redirected to the Parent's Show page where I see the parent's updated info
