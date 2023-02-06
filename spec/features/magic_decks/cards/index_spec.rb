@@ -54,7 +54,7 @@ end
 # Then I see each Child that is associated with that Parent with each Child's attributes
 # (data from each column that is on the child table)
 
-# [ ] done
+# [X] done
 
 # User Story 10, Parent Child Index Link
 

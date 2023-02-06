@@ -10,15 +10,6 @@ RSpec.describe 'MagicDeck edit page', type: :feature do
 
   describe "As a visitor" do
     context "When I visit the Parent Edit page" do
-      it "clicks the link to the update page from MagicDeck show and directs viewer to that page" do
-    
-        visit "/magic_decks/#{@magic_deck_4.id}"
-
-        click_link("Update #{@magic_deck_4.name}")
-
-        expect(current_path).to eq("/magic_decks/#{@magic_deck_4.id}/edit")
-      end
-
       it "can update the Magic Deck show page through the edit action" do
         
         visit "/magic_decks/#{@magic_deck_4.id}"
@@ -45,12 +36,15 @@ end
 # User Story 12, Parent Update 
 
 # As a visitor
-# When I visit a parent show page
+#  - magic_decks/show_spec.rb -
+# [When I visit a parent show page
 # Then I see a link to update the parent "Update Parent"
 # When I click the link "Update Parent"
-# Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
+# Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:]
+#  - magic_decks/edit_spec.rb -
+# [Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
 # When I fill out the form with updated information
 # And I click the button to submit the form
 # Then a `PATCH` request is sent to '/parents/:id',
 # the parent's info is updated,
-# and I am redirected to the Parent's Show page where I see the parent's updated info
+# and I am redirected to the Parent's Show page where I see the parent's updated info]
