@@ -38,6 +38,14 @@ RSpec.describe 'MagicDeck index page', type: :feature do
         expect(page).to have_content("#{@magic_deck_1.name}, created at: #{@magic_deck_1.created_at}")
         
       end
+
+      it "can click the link to a /new page from the index and re-directs viewer to that page" do
+    
+        visit "/magic_decks"
+  
+        click_link('New Magic Deck')
+        expect(current_path).to eq('/magic_decks/new')
+      end
     end
 
     context 'When I visit any page on the site' do
@@ -77,3 +85,19 @@ end
 # When I visit any page on the site
 # Then I see a link at the top of the page that takes me to the Parent Index
 
+# [X] done
+
+# User Story 11, Parent Creation 
+
+# As a visitor
+# - magic_decks/index_spec.rb -
+# [When I visit the Parent Index page
+# Then I see a link to create a new Parent record, "New Parent"
+# When I click this link
+# Then I am taken to '/parents/new' where I  see a form for a new parent record]
+# - magic_decks/new_spec.rb
+# [When I fill out the form with a new parent's attributes:
+# And I click the button "Create Parent" to submit the form
+# Then a `POST` request is sent to the '/parents' route,
+# a new parent record is created,
+# and I am redirected to the Parent Index page where I see the new Parent displayed.]
