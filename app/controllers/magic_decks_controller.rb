@@ -17,4 +17,8 @@ class MagicDecksController < ApplicationController
     magic_deck = MagicDeck.create(name: params[:name], format: params[:format])
     redirect_to "/magic_decks"
   end
+
+  def edit
+    
+  end
 end
