@@ -11,7 +11,7 @@
     <li>Format: <%= @magic_deck.format  %></li>
     <li>Legal? - <%= @magic_deck.qualifies  %></li>
   </ul>
-  <p><%= link_to "Update #{@magic_deck.name}", "/magic_decks/:id/edit" %></p>
+  <p><%= link_to "Update #{@magic_deck.name}", "/magic_decks/#{@magic_deck.id}/edit" %></p>
 </section>
 
 <!--

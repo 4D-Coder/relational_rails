@@ -5,28 +5,36 @@ RSpec.describe 'MagicDeck edit page', type: :feature do
     @magic_deck_1 = MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true, created_at: Time.now - 3.hour)
     @magic_deck_2 = MagicDeck.create!(name: "Treasury", format: "Historic", minimum_card_count: 60, qualifies: true, created_at: Time.now - 1.hour )
     @magic_deck_3 = MagicDeck.create!(name: "Newest Vampires", format: "Commander", minimum_card_count: 100, qualifies: true, created_at: Time.now - 2.hour )
+    @magic_deck_4 = MagicDeck.create!(name: "UnDeAD HUnGEr", format: "Comeander", minimum_card_count: 100, qualifies: true, created_at: Time.now - 2.hour )
   end
 
   describe "As a visitor" do
     describe "When I visit the Parent Edit page" do
       it "clicks the link to the update page from MagicDeck show and directs viewer to that page" do
     
-        visit "/magic_decks/#{@magic_deck_1.id}"
+        visit "/magic_decks/#{@magic_deck_4.id}"
 
-        click_link("Update #{@magic_deck_1.name}")
-        expect(current_path).to eq('/magic_decks/:id/edit')
+        click_link("Update #{@magic_deck_4.name}")
+
+        expect(current_path).to eq("/magic_decks/#{@magic_deck_4.id}/edit")
       end
 
-      xit "" do
-        # visit '/magic_decks/new'
+      it "can update the Magic Deck show page through the edit action" do
+        
+        visit "/magic_decks/#{@magic_deck_4.id}"
+        expect(page).to have_content("UnDeAD HUnGEr")
+        expect(page).to have_content("Comeander")
 
-        # fill_in('Name', with: 'Undead Hunger')
-        # fill_in('Format', with: 'Commander / EDH')
-        # click_button('Create Magic Deck')
+        click_link("Update #{@magic_deck_4.name}")
+        # visit "/magic_decks/#{@magic_deck_4.id}/edit"
 
-        # expect(current_path).to eq("/magic_decks")
-        # expect(page).to have_content('Undead Hunger')
-        # expect(page).to have_content('Commander / EDH')
+        fill_in('name', with: 'Undead Hunger')
+        fill_in('format', with: 'Commander / EDH')
+        click_button("Save Changes to #{@magic_deck_4.name}")
+        
+        expect(current_path).to eq("/magic_decks/#{@magic_deck_4.id}")
+        expect(page).to have_content('Undead Hunger')
+        expect(page).to have_content('Commander / EDH')
       end
     end
   end

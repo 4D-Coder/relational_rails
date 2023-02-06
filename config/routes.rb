@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/cards', to: 'cards#index'
   get '/cards/:id', to: 'cards#show'
   get '/magic_decks/:magic_decks_id', to: 'magic_decks#show'
+  patch '/magic_decks/:magic_decks_id', to: 'magic_decks#update'
   get '/magic_decks/:id/edit', to: 'magic_decks#edit'
   get '/magic_decks/:magic_deck_id/cards', to: 'magic_deck_cards#index'
 end
