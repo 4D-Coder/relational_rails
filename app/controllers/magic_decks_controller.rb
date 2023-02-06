@@ -8,4 +8,13 @@ class MagicDecksController < ApplicationController
     @magic_deck = MagicDeck.find(params[:magic_decks_id])
     @card_count = @magic_deck.cards.count
   end
+
+  def new
+
+  end
+
+  def create
+    magic_deck = MagicDeck.create(name: params[:name], format: params[:format])
+    redirect_to "/magic_decks"
+  end
 end

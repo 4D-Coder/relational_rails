@@ -1,0 +1,7 @@
+<%= form_with url: '/magic_decks', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :format %>
+  <%= form.text_field :format %>
+  <%= form.submit 'Create Magic Deck' %>
+<% end %>
