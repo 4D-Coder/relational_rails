@@ -45,9 +45,6 @@ RSpec.describe 'MagicDeckCards index page' do
   end
 end
 
-
-
-
 # [X] done
 
 # User Story 5, Parent Children Index 

@@ -9,7 +9,7 @@ RSpec.describe 'MagicDeck edit page', type: :feature do
   end
 
   describe "As a visitor" do
-    describe "When I visit the Parent Edit page" do
+    context "When I visit the Parent Edit page" do
       it "clicks the link to the update page from MagicDeck show and directs viewer to that page" do
     
         visit "/magic_decks/#{@magic_deck_4.id}"

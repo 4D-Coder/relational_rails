@@ -41,12 +41,11 @@ RSpec.describe 'MagicDeck index page', type: :feature do
     end
 
     context 'When I visit any page on the site' do
-      it 'can see a link at the top of the page that takes me to the Child Index' do
-        
-        visit '/magic_decks'
+      it 'can see a link at the top of the page that takes me to the Parent Index' do
+        visit '/cards'
 
-        click_link('Cards Index')
-        expect(current_path).to eq('/cards')
+        click_link('Magic Decks Index')
+        expect(current_path).to eq('/magic_decks')
       end
     end
   end
@@ -72,9 +71,9 @@ end
 
 # [X] done
 
-# User Story 8, Child Index Link
+# User Story 9, Parent Index Link
 
 # As a visitor
 # When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Child Index
+# Then I see a link at the top of the page that takes me to the Parent Index
 
