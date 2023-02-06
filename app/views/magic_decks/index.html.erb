@@ -3,10 +3,14 @@
   <%= link_to "Magic Decks Index", "/magic_decks" %>
   <h1>Magic Deck Index</h1>
 </header>
+<aside>
+  <p>Create A <%= link_to 'New Magic Deck', '/magic_decks/new' %> Here</p>
+</aside>
 <section>
   <% @magic_decks.each do |deck| %>
     <ul>
       <li><%= deck.name %>, created at: <%= deck.created_at %></li>
+      <li><%= deck.format%></li>
     </ul>
   <% end %>
 </section>
