@@ -22,13 +22,20 @@ RSpec.describe 'MagicDeck show page' do
         expect(page).to have_content("Format: #{@magic_deck_1.format}")
         expect(page).to have_content("Legal? - #{@magic_deck_1.qualifies}")
       end
-    
 
       it "I see a count of the number of children associated with this parent" do
       
         visit "/magic_decks/#{@magic_deck_1.id}"
         
         expect(page).to have_content("This deck has: #{@magic_deck_1.cards.count} cards")
+      end
+   
+      it "can see a link to take me to that parent's `child_table_name` page" do
+
+        visit "/magic_decks/#{@magic_deck_1.id}"
+        
+        click_link("#{@magic_deck_1.name}")
+        expect(current_path).to eq("/magic_decks/#{@magic_deck_1.id}/cards")
       end
 
       it "clicks the link to the update page from MagicDeck show and directs viewer to that page" do

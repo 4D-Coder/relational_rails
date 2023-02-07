@@ -1,0 +1,35 @@
+<nav>
+  <%= link_to "Cards Index", "/cards"%>
+  <%= link_to "Magic Decks Index", "/magic_decks" %>
+<nav>
+<header>
+  <h1>New Card Entry</h1>
+</header>
+<section>
+  <%= form_with url: '/magic_decks', method: :post, local: true do |form| %>
+  <%= form.label :name %><br>
+  <%= form.text_field :name %><br>
+  <%= form.label :format %><br>
+  <%= form.text_field :format %><br>
+  <%= form.label :mana_cost %><br>
+  <%= form.text_field :mana_cost %><br>
+  <%= form.label :type %><br>
+  <%= form.text_field :type %><br>
+  <%= form.label :archtype %><br>
+  <%= form.text_field :archtype %><br>
+  <%= form.label :rarity %><br>
+  <%= form.text_field :rarity %><br>
+  <%= form.label :power %><br>
+  <%= form.text_field :power %><br>
+  <%= form.label :toughness %><br>
+  <%= form.text_field :toughness %><br>
+  <%= form.label :expansion %><br>
+  <%= form.text_field :expansion %><br>
+  <p>Is this card legal to use?</p>
+  <%= form.radio_button :legality, true %>
+  <%= form.label :legality, "Yes" %>
+  <%= form.radio_button :legality, false %>
+  <%= form.label :legality, "No" %><br>
+  <%= form.submit 'Create Magic Deck' %>
+<% end %>
+</section>

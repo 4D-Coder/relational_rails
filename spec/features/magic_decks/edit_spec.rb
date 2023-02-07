@@ -31,7 +31,7 @@ RSpec.describe 'MagicDeck edit page', type: :feature do
   end
 end
 
-# [ ] done
+# [X] done
 
 # User Story 12, Parent Update 
 

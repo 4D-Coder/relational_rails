@@ -1,16 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe 'MagicDeckCards index page' do
-  before do
-    @magic_deck_1 = MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true)
-    
-    @card_1 = @magic_deck_1.cards.create!(name: "Henrika Domnathi", mana_cost: 4, card_type: "Legendary Creature", archtype: "Vampire", rarity: "MR", power_toughness: "1/3", expansion: "VOW", legal: true)
-    @card_2 = @magic_deck_1.cards.create!(name: "Necroduality", mana_cost: 4, card_type: "Enchantment", rarity: "MR", expansion: "VOW", legal: true)
+RSpec.describe 'MagicDeckCards new page' do
+  before :each do
+    let!(:magic_deck_1) { MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true, created_at: Time.now - 3.hour) }
+    let!(:magic_deck_2) { MagicDeck.create!(name: "Treasury", format: "Historic", minimum_card_count: 60, qualifies: true, created_at: Time.now - 1.hour ) }
+    let!(:magic_deck_3) { MagicDeck.create!(name: "Newest Vampires", format: "Commander", minimum_card_count: 100, qualifies: true, created_at: Time.now - 2.hour ) }
   end
-  
+
   describe "As a visitor" do
     context "When I visit a Parent Children Index page" do
-      it "can see each Child in the system including the Child's attributes" do
+      it "can" do
         
         visit "/magic_decks/#{@magic_deck_1.id}/cards"
 
@@ -29,44 +28,21 @@ RSpec.describe 'MagicDeckCards index page' do
         expect(page).to have_content("Expansion: #{@card_2.expansion}")
         expect(page).to have_content("Legal? - #{@card_2.legal}")
       end
-      
-      it "has link to add a new adoptable child for the parent 'Create Child' and takes user to a form" do
-        visit "/magic_decks/#{@magic_deck_1.id}/cards"
+    end
 
-        click_link("Create New Card Entry")
+    context "When I visit a parent show page" do
+      it "can see a link to take me to that parent's `child_table_name` page" do
+
+        visit "/magic_decks/#{@magic_deck_1.id}"
         
-        expect(current_path).to eq("/magic_decks/#{@magic_deck_1.id}/cards/new")
-        expect(page).to have_field("name")
-        expect(page).to have_field("format")
-        expect(page).to have_field("mana_cost")
-        expect(page).to have_field("type")
-        expect(page).to have_field("archtype")
-        expect(page).to have_field("rarity")
-        expect(page).to have_field("power")
-        expect(page).to have_field("toughness")
-        expect(page).to have_field("expansion")
-        choose('legality_true')
+        save_and_open_page
+        click_link("#{@magic_deck_1.name}")
+        expect(current_path).to eq("/magic_decks/#{@magic_deck_1.id}/cards")
       end
     end
   end
 end
 
-# [X] done
-
-# User Story 5, Parent Children Index 
-
-# As a visitor
-# When I visit '/parents/:parent_id/child_table_name'
-# Then I see each Child that is associated with that Parent with each Child's attributes
-# (data from each column that is on the child table)
-
-# [X] done
-
-# User Story 10, Parent Child Index Link
-
-# As a visitor
-# When I visit a parent show page ('/parents/:id')
-# Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
 
 # [ ] done
 
