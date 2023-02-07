@@ -1,6 +1,6 @@
 class MagicDecksController < ApplicationController
   def index
-    @magic_decks = MagicDeck.desc_ordered
+    @magic_decks = MagicDeck.desc_order
     
   end
   

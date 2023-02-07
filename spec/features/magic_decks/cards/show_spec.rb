@@ -10,12 +10,19 @@ RSpec.describe 'MagicDeckCards show page' do
       @card_2 = @magic_deck_1.cards.create!(name: "Necroduality", mana_cost: 4, card_type: "Enchantment", rarity: "MR", expansion: "VOW", legal: true)
     end
     
+    context "When I visit a parent's show page" do
+      it "sees a count of the number of children associated with this parent" do
+
+        visit "/magic_decks/#{@magic_deck_1.id}"
+        
+        expect(page).to have_content("This deck has: #{@magic_deck_1.cards.count} cards")
+      end
+    end
+
     context "When I visit '/parents/:parent_id/child_table_name'" do
       it "can see each Child in the system including the Child's attributes" do
         
         visit "/magic_decks/#{@magic_deck_1.id}/cards"
-        
-        save_and_open_page
 
         expect(page).to have_content(@card_1.name)
         expect(page).to have_content("Mana Cost: #{@card_1.mana_cost}")
@@ -44,6 +51,7 @@ end
 # When I visit '/parents/:parent_id/child_table_name'
 # Then I see each Child that is associated with that Parent with each Child's attributes
 # (data from each column that is on the child table)
+
 
 # [X] done
 

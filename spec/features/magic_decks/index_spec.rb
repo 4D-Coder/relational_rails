@@ -12,7 +12,7 @@ RSpec.describe 'MagicDeck index page', type: :feature do
       it "can see the name of each parent record in the system for each parent table" do
     
         visit "/magic_decks"
-        
+        #orderly gem? https://github.com/jmondo/orderly
         expect(page).to have_content(@magic_deck_1.name)
         expect(page).to have_content(@magic_deck_2.name)
         expect(page).to have_content(@magic_deck_3.name)
