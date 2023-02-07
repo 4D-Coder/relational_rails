@@ -1,43 +1,36 @@
 require 'rails_helper'
 
 RSpec.describe 'MagicDeckCards new page' do
-  before :each do
-    let!(:magic_deck_1) { MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true, created_at: Time.now - 3.hour) }
-    let!(:magic_deck_2) { MagicDeck.create!(name: "Treasury", format: "Historic", minimum_card_count: 60, qualifies: true, created_at: Time.now - 1.hour ) }
-    let!(:magic_deck_3) { MagicDeck.create!(name: "Newest Vampires", format: "Commander", minimum_card_count: 100, qualifies: true, created_at: Time.now - 2.hour ) }
-  end
+  let!(:magic_deck_1) { MagicDeck.create!(name: "Cycle of Death", format: "Standard", minimum_card_count: 60, qualifies: true, created_at: Time.now - 3.hour) }
+  let!(:magic_deck_2) { MagicDeck.create!(name: "Treasury", format: "Historic", minimum_card_count: 60, qualifies: true, created_at: Time.now - 1.hour ) }
+  let!(:magic_deck_3) { MagicDeck.create!(name: "Newest Vampires", format: "Commander", minimum_card_count: 100, qualifies: true, created_at: Time.now - 2.hour ) }
 
   describe "As a visitor" do
-    context "When I visit a Parent Children Index page" do
-      it "can" do
+    context "When I fill in the form with the child's attributes" do
+      it 'POSTs changes, and redirects user to magic_decks_cards index' do
+        visit "/magic_decks/#{magic_deck_2.id}/cards/new"
+
+        fill_in('name', with: 'Toski, Bearer of Secrets')
+        fill_in('mana_cost', with: 4)
+        fill_in('card_type', with: 'Legendary Creature')
+        fill_in('archtype', with: 'Squirrel')
+        fill_in('rarity', with: 'R')
+        fill_in('power_toughness', with: '1/1')
+        fill_in('expansion', with: 'Kaldheim')
         
-        visit "/magic_decks/#{@magic_deck_1.id}/cards"
+        choose('legal_true')
+        click_button('Create Card Entry')
 
-        expect(page).to have_content(@card_1.name)
-        expect(page).to have_content("Mana Cost: #{@card_1.mana_cost}")
-        expect(page).to have_content("Type - Archtype: #{@card_1.card_type} - #{@card_1.archtype}")
-        expect(page).to have_content("Rarity: #{@card_1.rarity}")
-        expect(page).to have_content("Power/Toughness: #{@card_1.power_toughness}")
-        expect(page).to have_content("Expansion: #{@card_1.expansion}")
-        expect(page).to have_content("Legal? - #{@card_1.legal}")
-        expect(page).to have_content(@card_2.name)
-        expect(page).to have_content("Mana Cost: #{@card_2.mana_cost}")
-        expect(page).to have_content("Type - Archtype: #{@card_2.card_type} - #{@card_2.archtype}")
-        expect(page).to have_content("Rarity: #{@card_2.rarity}")
-        expect(page).to have_content("Power/Toughness: #{@card_2.power_toughness}")
-        expect(page).to have_content("Expansion: #{@card_2.expansion}")
-        expect(page).to have_content("Legal? - #{@card_2.legal}")
-      end
-    end
+        new_card = magic_deck_2.cards.last
 
-    context "When I visit a parent show page" do
-      it "can see a link to take me to that parent's `child_table_name` page" do
-
-        visit "/magic_decks/#{@magic_deck_1.id}"
-        
-        save_and_open_page
-        click_link("#{@magic_deck_1.name}")
-        expect(current_path).to eq("/magic_decks/#{@magic_deck_1.id}/cards")
+        expect(current_path).to eq("/magic_decks/#{magic_deck_2.id}/cards")
+        expect(page).to have_content(new_card.name)
+        expect(page).to have_content("Mana Cost: #{new_card.mana_cost}")
+        expect(page).to have_content("Type - Archtype: #{new_card.card_type} - #{new_card.archtype}")
+        expect(page).to have_content("Rarity: #{new_card.rarity}")
+        expect(page).to have_content("Power/Toughness: #{new_card.power_toughness}")
+        expect(page).to have_content("Expansion: #{new_card.expansion}")
+        expect(page).to have_content("Legal? - #{new_card.legal}")
       end
     end
   end

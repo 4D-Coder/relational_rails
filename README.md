@@ -21,4 +21,5 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Schema
+  ![schema](app/assets/images/Screenshot%202023-02-07%20at%203.53.21%20PM.png)

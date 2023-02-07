@@ -37,15 +37,13 @@ RSpec.describe 'MagicDeckCards index page' do
         
         expect(current_path).to eq("/magic_decks/#{@magic_deck_1.id}/cards/new")
         expect(page).to have_field("name")
-        expect(page).to have_field("format")
         expect(page).to have_field("mana_cost")
-        expect(page).to have_field("type")
+        expect(page).to have_field("card_type")
         expect(page).to have_field("archtype")
         expect(page).to have_field("rarity")
-        expect(page).to have_field("power")
-        expect(page).to have_field("toughness")
+        expect(page).to have_field("power_toughness")
         expect(page).to have_field("expansion")
-        choose('legality_true')
+        choose('legal_true')
       end
     end
   end
