@@ -1,6 +1,8 @@
-<header>
+<nav>
   <%= link_to "Cards Index", "/cards"%>
   <%= link_to "Magic Decks Index", "/magic_decks" %>
+<nav>
+<header>
   <h1>Card Details</h1>
 </header>
 <section>
@@ -15,4 +17,5 @@
       <li>Legal? - <%= card.legal %></li>
     </ul>
   <% end %>
+  <%= link_to "Create New Card Entry", "/magic_decks/#{@magic_deck.id}/cards/new" %>
 </section>

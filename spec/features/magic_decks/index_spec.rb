@@ -12,7 +12,7 @@ RSpec.describe 'MagicDeck index page', type: :feature do
       it "can see the name of each parent record in the system for each parent table" do
     
         visit "/magic_decks"
-        
+        #orderly gem? https://github.com/jmondo/orderly
         expect(page).to have_content(@magic_deck_1.name)
         expect(page).to have_content(@magic_deck_2.name)
         expect(page).to have_content(@magic_deck_3.name)
@@ -38,15 +38,22 @@ RSpec.describe 'MagicDeck index page', type: :feature do
         expect(page).to have_content("#{@magic_deck_1.name}, created at: #{@magic_deck_1.created_at}")
         
       end
+
+      it "can click the link to a /new page from the index and re-directs viewer to that page" do
+    
+        visit "/magic_decks"
+  
+        click_link('New Magic Deck')
+        expect(current_path).to eq('/magic_decks/new')
+      end
     end
 
     context 'When I visit any page on the site' do
-      it 'can see a link at the top of the page that takes me to the Child Index' do
-        
-        visit '/magic_decks'
+      it 'can see a link at the top of the page that takes me to the Parent Index' do
+        visit '/cards'
 
-        click_link('Cards Index')
-        expect(current_path).to eq('/cards')
+        click_link('Magic Decks Index')
+        expect(current_path).to eq('/magic_decks')
       end
     end
   end
@@ -72,9 +79,25 @@ end
 
 # [X] done
 
-# User Story 8, Child Index Link
+# User Story 9, Parent Index Link
 
 # As a visitor
 # When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Child Index
+# Then I see a link at the top of the page that takes me to the Parent Index
 
+# [X] done
+
+# User Story 11, Parent Creation 
+
+# As a visitor
+# - magic_decks/index_spec.rb -
+# [When I visit the Parent Index page
+# Then I see a link to create a new Parent record, "New Parent"
+# When I click this link
+# Then I am taken to '/parents/new' where I  see a form for a new parent record]
+# - magic_decks/new_spec.rb
+# [When I fill out the form with a new parent's attributes:
+# And I click the button "Create Parent" to submit the form
+# Then a `POST` request is sent to the '/parents' route,
+# a new parent record is created,
+# and I am redirected to the Parent Index page where I see the new Parent displayed.]
