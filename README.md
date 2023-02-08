@@ -1,25 +1,22 @@
-# README
+# Magic Deck Builder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
 
-Things you may want to cover:
+## Ruby Version
+Ensure that you are running rails 5.2.8 with:
 
-* Ruby version
+```powershell
+  rails -v
+```
 
-* System dependencies
+Follow instructions [here]((https://github.com/turingschool-examples/task_manager_rails/blob/main/rails_uninstall.md)) if you find that you are on another version.
 
-* Configuration
+## Configuration / Database initialization
 
-* Database creation
+* Run ``` rails c``` to enter the ``` rails console ```
+* Once in, run ``` rails db:{drop,create,migrate,seed} ``` for a fresh database for the web application.
 
-* Database initialization
+## Schema Diagram
+![schema](app/assets/images/Screenshot%202023-02-07%20at%203.53.21%20PM.png)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* Schema
-  ![schema](app/assets/images/Screenshot%202023-02-07%20at%203.53.21%20PM.png)
+---
